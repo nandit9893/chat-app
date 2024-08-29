@@ -53,7 +53,6 @@ const Login = () => {
     const response = await axios.post(newUrl, data);
     if (response.data.success) {
       const { accessToken, user } = response.data.data;
-
       if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
         await fetchData();

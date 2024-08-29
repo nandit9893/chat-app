@@ -3,13 +3,9 @@ import { Message } from "../models/usermessages.models.js";
 import { Chat } from "../models/userchat.models.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import {
-  deleteFromCloudinary,
-  uploadOnCloudinary,
-} from "../utils/cloudinary.js";
+import { deleteFromCloudinary, uploadOnCloudinary } from "../utils/cloudinary.js";
 import convertTimeStamp from "../utils/timestamp.js";
 import bcrypt from "bcrypt";
-import nodemailer from "nodemailer";
 
 const generateAccessAndRefreshToken = async (userId) => {
   try {
@@ -102,38 +98,6 @@ const login = async (req, res) => {
         message: "User not found",
       });
     }
-
-    const isRefreshTokenAvailable = user.refreshToken;
-    if (isRefreshTokenAvailable !== null) {
-      const transporter = nodemailer.createTransport({
-        service: "Gmail",
-        auth: {
-          user: process.env.EMAIL,
-          pass: process.env.EMAIL_PASSWORD,
-        },
-      });
-
-      const mailOptions = {
-        from: process.env.EMAIL,
-        to: user.email,
-        subject: "Login Attempt Notification",
-        text: "Someone is trying to log in to your account. If it was you, please ignore this message. Otherwise, please secure your account.",
-      };
-
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.log("Error sending email", error);
-        } else {
-          console.log("Email sent : " + info.response);
-        }
-      });
-
-      return res.status(409).json({
-        success: false,
-        message:
-          "You are already logged in. A login attempt notification has been sent to your email.",
-      });
-    }
     const isPasswordValid = await user.isPasswordCorrect(password);
     if (!isPasswordValid) {
       return res.status(401).json({
@@ -217,14 +181,14 @@ const profileUpdate = async (req, res) => {
     const user = await User.findById(req.user?._id).select("avatar bio");
     let avatarURL = user.avatar;
     if (avtarLocalPath) {
-      if (avatarURL) {
+      if(avatarURL){
         await deleteFromCloudinary(user.avatar, "avatar");
       }
       const { url } = await uploadOnCloudinary(avtarLocalPath);
       avatarURL = url;
     }
 
-    const updatedBio = bio ? bio : user.bio;
+    const updatedBio = bio? bio : user.bio;
     await User.findByIdAndUpdate(
       req.user?._id,
       {
