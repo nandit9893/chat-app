@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { url, userDataLogin, fetchData, newName, setNewName } = useContext(AppContext);
+  const { url, userDataLogin, fetchData, setNewName } = useContext(AppContext);
   const [currState, setCurrState] = useState("Sign Up");
   const [data, setData] = useState({
     username: "",
