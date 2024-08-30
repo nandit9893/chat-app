@@ -9,10 +9,10 @@ import axios from "axios";
 import RightSidebar from "../RightSidebar/RightSidebar";
 const LeftSidebar = () => {
   const navigate = useNavigate();
-  const { url, searchResults, searchUsers, logFetchData, fetchLoginData, chatVisible, setChatVisible } =
+  const { url, searchResults, searchUsers, logFetchData, fetchLoginData, chatVisible, setChatVisible, setSelectedUserId } =
     useContext(AppContext);
   const searchInputRef = useRef(null);
-  const [selectedUserId, setSelectedUserId] = useState(null);
+
 
   const searchData = async (event) => {
     event.preventDefault();
@@ -148,10 +148,6 @@ const LeftSidebar = () => {
             )) : 
           null
         }
-      </div>
-      <div id="chat-box">
-        <ChatBox selectedUserId={selectedUserId} />
-        <RightSidebar selectedUserId={selectedUserId} />
       </div>
     </div>
   );

@@ -8,9 +8,9 @@ import { toast } from "react-toastify";
 let newDataReceiver = {};
 let IMAGE_URL = [];
 let userOnline = null;
-const RightSidebar = ({ selectedUserId }) => {
+const RightSidebar = () => {
   const navigate = useNavigate();
-  const { url, userDataLogin, fetchData } = useContext(AppContext);
+  const { url, userDataLogin, fetchData, selectedUserId } = useContext(AppContext);
 
   useEffect(() => {
     const fetchedData = async () => {

@@ -9,6 +9,7 @@ const AppContextProvider = ({ children }) => {
   const [logFetchData, setLogFetchData] = useState([]);
   const [newName, setNewName] = useState(null);
   const [chatVisible, setChatVisible] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
   const fetchData = async () => {
     const newURL = `${url}/chatapp/users/getuserdataright`;
@@ -82,7 +83,9 @@ const AppContextProvider = ({ children }) => {
     newName,
     setNewName,
     chatVisible,
-    setChatVisible
+    setChatVisible,
+    selectedUserId,
+    setSelectedUserId
   };
 
   return (

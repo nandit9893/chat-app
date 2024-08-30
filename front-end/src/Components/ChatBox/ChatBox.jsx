@@ -9,8 +9,8 @@ let messageContainer = [];
 let newID;
 let userOnline = null;
 let newImage = {};
-const ChatBox = ({ selectedUserId }) => {
-  const { url, userDataLogin, fetchData, fetchLoginData, newName, chatVisible, setChatVisible } = useContext(AppContext);
+const ChatBox = () => {
+  const { url, userDataLogin, fetchData, fetchLoginData, newName, chatVisible, setChatVisible, selectedUserId } = useContext(AppContext);
   const [sendMessage, setSendMessage] = React.useState({
     messageContent: "",
   });

@@ -101,9 +101,6 @@
 .menu:hover .sub-menu{
     display: block;
 }
-#chat-box {
-    display: none;
-}
 .friends.unseen img {
     border: 3px solid #9e9eea;
 }
