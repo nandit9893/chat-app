@@ -1,7 +1,7 @@
 # MERN Stack Chat Application Overview
   This project is a fully functional chat application developed using the MERN stack (MongoDB, Express.js, React.js, and Node.js). It incorporates a user-friendly interface and essential features such as user authentication, password recovery, and real-time chat functionality. Below is a detailed overview of the application's features and the technologies used.
   
-**Visit**: https://chat-app-front-end-667v.onrender.com/
+**Visit**: https://chat-app-front-end-h85p.onrender.com/
 
 ## Key Features 
 ### **User Authentication**
