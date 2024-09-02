@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 const AppContext = createContext();
 const AppContextProvider = ({ children }) => {
-  const url = "http://localhost:8000";
+  const url = "https://chat-app-back-end-z33d.onrender.com";
   const [userDataLogin, setUserDataLogin] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [logFetchData, setLogFetchData] = useState([]);
